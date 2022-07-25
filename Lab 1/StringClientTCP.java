@@ -4,7 +4,7 @@ import java.net.*;
 public class StringClientTCP {
     
     public static void main(String[] args) throws Exception {
-        
+        System.out.println("\n\t\tAchyut Parsaniya - 92000103081\n");
         Socket s = new Socket("localhost",9999);
         DataOutputStream dout = new DataOutputStream(s.getOutputStream());
         DataInputStream din = new DataInputStream(s.getInputStream());

@@ -4,7 +4,7 @@ public class StringServerUDP {
     public static void main(String[] args) 
     {
         try {
-
+            System.out.println("\n\t\tAchyut Parsaniya - 92000103081\n");
             DatagramSocket ds = new DatagramSocket(3001);
             byte [] buf = new byte[100];
             DatagramPacket dp = new DatagramPacket(buf, 100);
