@@ -1,6 +1,5 @@
 import java.sql.*;
 import java.util.Scanner;
-
 public class jdbc_program2{
 
     static final String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -8,11 +7,23 @@ public class jdbc_program2{
     static final String USER = "root";
     static final String PASS = ""; 
 
+    static void result() throws ClassNotFoundException, SQLException{
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs=null;
+        Class.forName(DRIVER);
+        conn = DriverManager.getConnection(URL, USER, PASS); 
+        stmt = conn.createStatement();
+    
+        System.out.println("\nDisplay Data : ");
+        rs = stmt.executeQuery("select * from emp");
+        while(rs.next())  
+            System.out.println(rs.getInt(1)+"  "+rs.getString(2) +"  "+rs.getInt(3)+"  "+rs.getString(4));
+    }
     public static void main(String[] args) {
         
         Connection conn = null;
         Statement stmt = null;
-        ResultSet rs = null;
 
         try{
             Class.forName(DRIVER);
@@ -32,12 +43,7 @@ public class jdbc_program2{
             switch(ch) {
 
                 case 1 :
-
-                    rs = stmt.executeQuery("select * from emp"); 
-
-                    System.out.println("\nDisplay Data : ");
-                    while(rs.next())  
-                        System.out.println(rs.getInt(1)+"  "+rs.getString(2) +"  "+rs.getInt(3)+"  "+rs.getString(4));
+                    result();
                     break;
                 
                 case 2 :
@@ -59,8 +65,9 @@ public class jdbc_program2{
                     if(i1==0)
                         System.out.println("Data not inserted.");
                     else
-                        System.out.println("Data inserted.");   
-                    
+                        System.out.println("Data inserted."); 
+                   
+                    result();    
                     break;
                  
                 case 3 :
@@ -77,8 +84,9 @@ public class jdbc_program2{
                     if(u1==0)
                         System.out.println("Data not updated.");
                     else
-                        System.out.println("Data updated.");   
+                        System.out.println("Data updated."); 
                     
+                    result();    
                     break;
                 
                 case 4 :
@@ -93,17 +101,20 @@ public class jdbc_program2{
                     else
                         System.out.println("Data deleted.");   
                     
-                    break;    
+                    result();
+                    break;   
                 
                 default :
                     System.out.println("Enter Valid Choice...!!");    
             }
 
-
+            
             sc.close();
         }catch(Exception e){
             System.out.println(e);
         }
+        
 
     }
+    
 }
