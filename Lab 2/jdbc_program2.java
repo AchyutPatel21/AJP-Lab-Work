@@ -26,7 +26,7 @@ public class jdbc_program2{
             System.out.println("2. To Insert Data");
             System.out.println("3. To Update Data");
             System.out.println("4. To Delete Data");
-            System.out.println("Enter Your Choice : ");
+            System.out.println("\nEnter Your Choice : ");
             ch = sc.nextInt();
 
             switch(ch) {
